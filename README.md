@@ -1,4 +1,4 @@
-<h2><a href="link"> atarefa.do </a></h2>
+<h2><a href="https://zaqueu-1.github.io/atarefa-do/"> atarefa.do </a></h2>
 <h5>seu caderninho virtual</h5>
 
 <div style="display: inline_block">
@@ -14,7 +14,7 @@
 </div>
 
 <h2>Descrição</h2>
-<p><a href="link">atarefa.do</a> foi pensado pra ser simples e fácil de usar: um caderninho virtual (o <b><i>seu</b></i> caderninho virtual!) cheio de personalidade!</p>
+<p><a href="https://zaqueu-1.github.io/atarefa-do/">atarefa.do</a> foi pensado pra ser simples e fácil de usar: um caderninho virtual (o <b><i>seu</b></i> caderninho virtual!) cheio de personalidade!</p>
 
 Com ele você pode organizar suas tarefas diárias de forma prática e descomplicada, podendo filtrá-las, editá-las e buscá-las a qualquer momento!
 
