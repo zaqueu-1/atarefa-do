@@ -13,6 +13,21 @@ body {
     background-color: #FEDBB2;
 }
 
+.contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+h6 {
+    color: #DEB99E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 1px rgba(255, 255, 255, 0.35);
+}
+
 /*Botões*/
 button {
     color: whitesmoke;
@@ -30,6 +45,23 @@ button {
     align-items: center;
     transition: 0.4s;
     margin-top: 2.5px;
+}
+
+button#git, button#in {
+    background-color: transparent;
+    border: 2px solid transparent;
+    width: 2rem;
+    font-size: 2rem;
+    margin-top: 2.5px;
+}
+
+#git i, #in i {
+    color: whitesmoke;
+    transition: 0.4s;
+}
+
+#git:hover i, #in:hover i {
+    color: #666;
 }
 
 button#cancel-edit-btn {
