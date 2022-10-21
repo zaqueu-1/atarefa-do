@@ -139,6 +139,7 @@ document.addEventListener("click", (e) => {
         Swal.fire({
             color: '#666',
             title: 'quer apagar essa tarefa?',
+            width: '500px',
             text: "",
             icon: 'warning',
             showCancelButton: true,
