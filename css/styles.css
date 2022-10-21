@@ -8,6 +8,10 @@
     box-sizing: border-box;    
 }
 
+.dark-theme {
+    background-color: #666;
+}
+
 body {
     background-size: cover;
     background-color: #FEDBB2;
@@ -20,16 +24,17 @@ body {
     transition: 0.4s;
 }
 
-h6 {
+h6.footer {
     color: #DEB99E;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
     text-shadow: 2px 1px rgba(255, 255, 255, 0.35);
 }
 
 /*Botões*/
-button {
+button.finish-todo, button.edit-todo, button.remove-todo, button#submit-task, button#edit-task, button#cancel-edit-btn, button#erase-button {
     color: whitesmoke;
     background-color: #E8AF94;
     border: 2px solid #E8AF94;
@@ -50,9 +55,13 @@ button {
 button#git, button#in {
     background-color: transparent;
     border: 2px solid transparent;
-    width: 2rem;
-    font-size: 2rem;
-    margin-top: 2.5px;
+    width: 2.4rem;
+    font-size: 2.1rem;
+    color: whitesmoke;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #git i, #in i {
@@ -66,49 +75,51 @@ button#git, button#in {
 
 button#cancel-edit-btn {
     width: 4rem;
+    height: 1rem;
+    padding: 1rem;
     font-size: 0.8rem;
     margin-top: 2.5px;
     margin-left: 5px; 
-    text-shadow: 0.5px 0.5px #888;
+    text-shadow: 1px 1px #888;
+    color: whitesmoke;
+    background-color: #E8AF94;
+    border: 2px solid #E8AF94;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
 }
 
 button:hover.finish-todo {
     background-color: #abdb9a;
     border-radius: 8px;
     border: 2px solid whitesmoke;
-    box-shadow: 0px 0px whitesmoke;
 }
 
 button:hover.edit-todo {
     background-color: #86b5c1;
     border-radius: 8px;
     border: 2px solid whitesmoke;
-    box-shadow: 0px 0px whitesmoke;
 }
 
 button:hover.remove-todo, button:hover#cancel-edit-btn, button:hover#erase-button {
     background-color: #f88080;
     border-radius: 8px;
     border: 2px solid whitesmoke;
-    box-shadow: 0px 0px whitesmoke;
 }
 
 button:hover#submit-task, button:hover#edit-task {
     background-color: #b9da96;
     border-radius: 8px;
     border: 2px solid whitesmoke;
-    box-shadow: 0px 0px whitesmoke;
 }
 
 button i {
     color: whitesmoke;
     font-weight: bold;
     pointer-events: none;
-    text-shadow: 0px 1px #888;
-}
-
-button:hover > i {
-    color: whitesmoke;
 }
 
 input, select {
