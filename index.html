@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atarefa.DO</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="css/styles.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--JS-->
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <div class="todo-container">
+       <header>
+        <h1 id="atarefa">atarefa</h1><h1 id="dot">.</h1><h1 id="do">DO</h1>
+        <h5 id="subtitle"> seu caderninho virtual</h5>
+    </header> 
+       <form id="todo-form">
+        <p>agenda lotada, né?</p>
+        <div class="form-control">
+            <input type="text" id="todo-input" placeholder="adicione uma tarefa:">
+            <button type="submit" id="submit-task">
+                <i class="fa-thin fa-plus"></i>
+            </button>
+        </div>
+       </form>
+       <form id="edit-form" class="hide">
+        <p>edite sua tarefa:</p>
+        <div class="form-control">
+            <input type="text" id="edit-input">
+            <button type="submit" id="edit-task">
+                <i class="fa-solid fa-check-double"></i>
+            </button>
+            <button id="cancel-edit-btn">cancelar</button> 
+        </div>
+              
+        </form>
+        <div id="toolbar">
+            <div id="search">
+                <h4>esqueceu algo?</h4>
+                <form>
+                    <input type="text" id="search-input" placeholder="busque aqui:">
+                    <button id="erase-button">
+                        <i class="fa-solid fa-delete-left"></i>
+                    </button>
+                </form>
+            </div>
+            <div id="filter">
+                <h4>filtre por:</h4>
+                <select id="filter-select">
+                    <option value="all">todas</option>
+                    <option value="done">concluídas</option>
+                    <option value="todo">pendentes</option>
+                </select>
+            </div>
+        </div>
+        <div id="todo-list">
+            <div class="todo done">
+                <h3>passear com meu dog</h3>
+                <button class="finish-todo">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="edit-todo">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="remove-todo">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="todo">
+                <h3>entregar os relatórios</h3>
+                <button class="finish-todo">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+                <button class="edit-todo">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="remove-todo">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
