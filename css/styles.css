@@ -1,154 +1,44 @@
-/*Geral*/
+/*dark-theme*/
+.dark {
+    background-color: #263238;
+    opacity: 0.8;
+}
+
+/*general config*/
 * { 
     padding: 0;
     margin: 0;
     font-family: Helvetica;
-    color: #666;
-    outline: none;
     box-sizing: border-box;    
-}
-
-.dark-theme {
-    background-color: #666;
-}
-
-body {
-    background-size: cover;
-    background-color: #FEDBB2;
-}
-
-.contato {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-}
-
-h6.footer {
-    color: #DEB99E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
-    text-shadow: 2px 1px rgba(255, 255, 255, 0.35);
-}
-
-/*Botões*/
-button.finish-todo, button.edit-todo, button.remove-todo, button#submit-task, button#edit-task, button#cancel-edit-btn, button#erase-button {
-    color: whitesmoke;
-    background-color: #E8AF94;
-    border: 2px solid #E8AF94;
-    border-radius: 8px;
-    text-shadow: 2px 1px #888;
-    height: 1rem;
-    width: 0.5rem;
-    padding: 1rem;
-    font-size: 0.75rem;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-    margin-top: 2.5px;
-}
-
-button#git, button#in {
-    background-color: transparent;
-    border: 2px solid transparent;
-    width: 2.4rem;
-    font-size: 2.1rem;
-    color: whitesmoke;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#git i, #in i {
-    color: whitesmoke;
-    transition: 0.4s;
-}
-
-#git:hover i, #in:hover i {
-    color: #666;
-}
-
-button#cancel-edit-btn {
-    width: 4rem;
-    height: 1rem;
-    padding: 1rem;
-    font-size: 0.8rem;
-    margin-top: 2.5px;
-    margin-left: 5px; 
-    text-shadow: 1px 1px #888;
-    color: whitesmoke;
-    background-color: #E8AF94;
-    border: 2px solid #E8AF94;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-}
-
-button:hover.finish-todo {
-    background-color: #abdb9a;
-    border-radius: 8px;
-    border: 2px solid whitesmoke;
-}
-
-button:hover.edit-todo {
-    background-color: #86b5c1;
-    border-radius: 8px;
-    border: 2px solid whitesmoke;
-}
-
-button:hover.remove-todo, button:hover#cancel-edit-btn, button:hover#erase-button {
-    background-color: #f88080;
-    border-radius: 8px;
-    border: 2px solid whitesmoke;
-}
-
-button:hover#submit-task, button:hover#edit-task {
-    background-color: #b9da96;
-    border-radius: 8px;
-    border: 2px solid whitesmoke;
-}
-
-button i {
-    color: whitesmoke;
-    font-weight: bold;
-    pointer-events: none;
-}
-
-input, select {
-    height: 40px;
-    line-height: 28px;
-    padding: 0.25rem 0.5rem;
-    width: 100%;
-    padding-left: .5rem;
-    border: 2px solid whitesmoke;
-    border-radius: 8px;
-    outline: none;
-    background-color: whitesmoke;
-    color: #333;
-    transition: .3s ease;
 }
 
 .hide {
     display:none;
 }
 
-/*Todo Header*/
+/*body*/
+body {
+    background-color: #FEDBB2;
+    color: #666;
+    transition: 0.3s;
+    margin-top: 65px;
+}
+
 .todo-container {
-    max-width: 450px;
-    margin: 3rem auto;
     background-color: #FED298;
-    padding: 1.5rem;;
+    box-shadow:  12px 12px 30px rgb(109, 109, 109),  /*right*/
+                -10px 0px 0px #DEB99E;              /*left*/
     border-radius: 30px 60px;
-    box-shadow:  12px 12px 50px #777, /*sombra escura*/
-                 -10px 0px 0px #DEB99E; /*sombra clara*/
+    margin: 3rem auto;
+    max-width: 500px;
+    padding: 1.5rem;
+    transition: 0.3s;
+}
+
+/*header*/
+.todo-container header {
+    text-align: center;
+    padding: 0 1rem 1rem;
 }
 
 h1 {
@@ -157,12 +47,12 @@ h1 {
 
 #atarefa {
     color:white;
-    text-shadow: 2px 2px #999;
+    text-shadow: 1px 1px #777;
 }
 
 #dot {
     color: #CC9A81;
-    letter-spacing: -2px;
+    letter-spacing: -2.9px;
 }
 
 #do {
@@ -171,17 +61,81 @@ h1 {
 
 #subtitle {
     color:#555;
+    font-size: 0.75rem;
+    margin-top: -4px;
 }
 
-.todo-container header {
-    text-align: center;
-    padding: 0 1rem 1rem;
-}
-
-/*Todo Form*/
-#todo-form, #edit-form {
+/*buttons*/
+button.finish-todo, button.edit-todo, button.remove-todo, button#submit-task, button#edit-task, button#cancel-edit-btn, button#erase-button {
+    background-color: #E8AF94;
+    border: 2px solid #E8AF94;
+    border-radius: 8px;
+    text-shadow: 1px 1px rgb(136, 136, 136, 0.6);
+    cursor: pointer;
+    display: flex;
+    height: 1rem;
+    width: 0.5rem;
     padding: 1rem;
-    border-bottom: 2px dashed #CC9A81;
+    font-size: 0.75rem;
+    margin-top: 2.5px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+button#cancel-edit-btn {
+    background-color: #E8AF94;
+    border: 2px solid #E8AF94;
+    border-radius: 8px;
+    color: whitesmoke;
+    cursor: pointer;
+    display: flex;
+    height: 1rem;
+    width: 4rem;
+    padding: 1rem;
+    font-size: 0.8rem;
+    margin-top: 2.5px;
+    margin-left: 5px; 
+    text-shadow: 1px 1px #888;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+button i {
+    color: whitesmoke;
+    pointer-events: none;
+}
+
+button:hover.finish-todo {
+    background-color: #abdb9a;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+}
+
+button:hover.edit-todo {
+    background-color: #86b5c1;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+}
+
+button:hover.remove-todo, button:hover#cancel-edit-btn, button:hover#erase-button {
+    background-color: #f88080;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+}
+
+button:hover#submit-task, button:hover#edit-task {
+    background-color: #b9da96;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+}
+
+/*inputs, select & forms*/
+#todo-form, #edit-form {
+    border-bottom: 1px dashed #CC9A81;
+    padding: 1rem;
+    transition: 0.3s;
 }
 
 #todo-form p, #edit-form p {
@@ -195,61 +149,77 @@ h1 {
 
 .form-control input {
     margin-right: 0.3rem;
-    border: 2px solid whitesmoke;
-    color: #777;
 }
 
-/*Todo toolbar*/
+input, select {
+    background-color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+    color: #666;
+    line-height: 28px;
+    height: 40px;
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    padding-left: 0.5rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input:hover, select:hover {
+    border: 2px solid rgb(102, 102, 102, 0.5);
+}
+
+::placeholder {
+    opacity: 0.6;
+}
+
+/*toolbar (search & filter)*/
 #toolbar {
-    padding: 1rem;
-    border-bottom: 2px dashed #CC9A81;
+    border-bottom: 1px dashed #CC9A81;
     display: flex;
+    padding: 1rem;
+    transition: 0.3s;
 }
 
 #toolbar h4 {
     margin-bottom: .5rem;
 }
 
-#search {
-    border-right: 1px dashed #CC9A81;
-    padding-right: 1rem;
-    margin-right: 1rem;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-}
-
 #search form {
     display: flex;
 }
 
+#search {
+    border-right: 1px dashed #CC9A81;
+    display: flex;
+    width: 80%;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    flex-direction: column;
+}
+
 #search input {
-    width: 100%;
     margin-right: 0.3rem;
-    border: 2px solid whitesmoke;
-    color: #777;
 }
 
 #filter {
-    width: 35%;
+    width: 30%;
     display: flex;
     flex-direction: column;    
 }
 
 #filter-select {
+    color: rgb(102, 102, 102, 0.6);
     flex: 1;
-    border: 2px solid whitesmoke;
-    color: #777;
 }
 
-/*Todo list*/
+/*tasks (to dos)*/
 .todo {
+    align-items: center;
+    border-bottom: 1px dashed #CC9A81;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     padding: 1rem;
-    border-bottom: 1px dashed #CC9A81;
-    transition: 0.4s;
 }
 
 .todo h3 {
@@ -263,10 +233,243 @@ h1 {
 
 .done {
     background-color: #FEDBB2;
+    transition: 0.3s;
 }
 
 .done h3 {
-    color: #8888;
+    opacity: 0.5;
     text-decoration: line-through;
-    text-decoration-color: #9999;
+    transition: 0.6s;
+}
+
+/*footer*/
+.contato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+button#git, button#in {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: whitesmoke;
+    width: 2.4rem;
+    font-size: 2.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px rgb(136, 136, 136, 0.25);
+}
+
+#git i, #in i, h6.footer {
+    color: #DEB99E;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+#git:hover i, #in:hover i {
+    color: #666;
+}
+
+h6.footer {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+/*dark mode toggle wrapper*/
+.dmode {
+    position: relative;
+    top: -2rem;
+}
+
+.toggleWrapper {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    overflow: hidden;
+    padding: 0 200px;
+    transform: translate3d(-50%, -55%, 0);
+    color: white;
+}
+  
+.toggleWrapper input {
+    position: absolute;
+    left: -99em;
+}
+  
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 55px;
+    height: 30px;
+    background-color: #a1d8f2;
+    border-radius: 84px;
+    transition: background-color 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+     
+.toggle__handler {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    top: 4px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background-color: #ffcf96;
+    border-radius: 50px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    transition: all 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: rotate(-45deg);
+}
+  
+.toggle__handler .crater {
+    position: absolute;
+    background-color: #e8cda5;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+    border-radius: 100%;
+}
+  
+.toggle__handler .crater--1 {
+    top: 5px;
+    left: 14px;
+    width: 4px;
+    height: 4px;
+}
+  
+.toggle__handler .crater--2 {
+    top: 14px;
+    left: 10px;
+    width: 3px;
+    height: 3px;
+}
+  
+.toggle__handler .crater--3 {
+    top: 8px;
+    left: 4px;
+    width: 2px;
+    height: 2px;
+}
+  
+.star {
+    position: absolute;
+    background-color: rgb(255, 255, 255, 0.8);
+    transition: all 300ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    border-radius: 50%;
+}
+  
+.star--1 {
+    top: 8px;
+    left: 24px;
+    z-index: 0;
+    width: 14px;
+    height: 1.7px;
+}
+  
+.star--2 {
+    top: 14px;
+    left: 16px;
+    z-index: 1;
+    width: 17px;
+    height: 2px;
+}
+  
+.star--3 {
+    top: 18px;
+    left: 26px;
+    z-index: 0;
+    width: 18px;
+    height: 2px;
+}
+  
+.star--4, .star--5, .star--6 {
+    opacity: 0;
+    transition: all 300ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+  
+.star--4 {
+    top: 16px;
+    left: 26px;
+    z-index: 0;
+    width: 2px;
+    height: 2px;
+    transform: translate3d(3px, 0, 0);
+}
+  
+.star--5 {
+    top: 7px;
+    left: 25px;
+    z-index: 0;
+    width: 1.5px;
+    height: 1.5px;
+    transform: translate3d(3px, 0, 0);
+}
+  
+.star--6 {
+    top: 24px;
+    left: 18px;
+    z-index: 0;
+    width: 2px;
+    height: 2px;
+    transform: translate3d(3px, 0, 0);
+}
+  
+input:checked + .toggle {
+    background-color: #436390;
+}
+  
+input:checked + .toggle:before {
+    color: #749ed7;
+}
+  
+input:checked + .toggle:after {
+    color: #fff;
+}
+  
+input:checked + .toggle .toggle__handler {
+    background-color: #ffe5b5;
+    transform: translate3d(28px, 0, 0) rotate(0);
+}
+  
+input:checked + .toggle .toggle__handler .crater {
+    opacity: 1;
+}
+  
+input:checked + .toggle .star--1 {
+    width: 2px;
+    height: 2px;
+    transform: translate3d(-5px, 0, 0);
+}
+  
+input:checked + .toggle .star--2 {
+    width: 4px;
+    height: 4px;
+    transform: translate3d(-5px, 0, 0);
+}
+  
+input:checked + .toggle .star--3 {
+    width: 2px;
+    height: 2px;
+    transform: translate3d(-21px, 0, 0);
+}
+  
+input:checked + .toggle .star--4, input:checked + .toggle .star--5, input:checked + .toggle .star--6 {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+  
+input:checked + .toggle .star--4 {
+    transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+  
+input:checked + .toggle .star--5 {
+    transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+  
+input:checked + .toggle .star--6 {
+    transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }

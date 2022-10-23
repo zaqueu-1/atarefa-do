@@ -1,4 +1,28 @@
-//Seleção de elementos
+//dark mode
+const darkToggle = document.querySelector("#change-theme");
+
+darkToggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark");
+        localStorage.removeItem("dark");
+
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("dark", 1);
+        }
+});
+
+loadTheme = () => {
+  if (localStorage.getItem("dark")) {
+    darkToggle.checked = true;
+    document.body.classList.toggle("dark");
+  }
+  else {
+    darkToggle.checked = false;
+  }
+}
+
+loadTheme();
+
+//hmtl selector
 const todoForm = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo-input");
 const todoList = document.querySelector("#todo-list");
@@ -10,10 +34,8 @@ const eraseBtn = document.querySelector("#erase-button");
 const filterBtn = document.querySelector("#filter-select");
 let oldInputValue;
 
-
-
-//Funções
-const saveTodo = (text, done = 0, save = 1) => {
+//functions
+saveTodo = (text, done = 0, save = 1) => {
     const todo = document.createElement("div");
     todo.classList.add("todo");
 
@@ -48,13 +70,13 @@ const saveTodo = (text, done = 0, save = 1) => {
     todoInput.value = "";
 };
 
-const toggleForms = () => {
+toggleForms = () => {
     editForm.classList.toggle("hide");
     todoForm.classList.toggle("hide");
     todoList.classList.toggle("hide");
 };
 
-const updateTodo = (text) => {
+updateTodo = (text) => {
     const todos = document.querySelectorAll(".todo");
     
     todos.forEach((todo) => {
@@ -67,7 +89,7 @@ const updateTodo = (text) => {
     });
 };
 
-const getSearchedTodos = (search) => {
+getSearchedTodos = (search) => {
     const todos = document.querySelectorAll(".todo");
 
     todos.forEach((todo) => {
@@ -83,7 +105,7 @@ const getSearchedTodos = (search) => {
     });
 };
 
-const filterTodos = (filterValue) => {
+filterTodos = (filterValue) => {
     const todos = document.querySelectorAll(".todo");
 
     switch (filterValue) {
@@ -110,7 +132,7 @@ const filterTodos = (filterValue) => {
     }
 };
 
-//Eventos
+//events
 todoForm.addEventListener("submit", (e) => {
     const inputValue = todoInput.value.trim();
     e.preventDefault();
@@ -136,11 +158,14 @@ document.addEventListener("click", (e) => {
 
     if (targetEl.classList.contains("remove-todo")) {
         
-        Swal.fire({
-            color: '#666',
+        const swalMod = swal.mixin({
+            maxWidth: '450px',
+            background: '#555',
+            color: 'whitesmoke',
+          })
+        
+        swalMod.fire({
             title: 'quer apagar essa tarefa?',
-            maxWidth: '500px',
-            width: '500px',
             display: 'block',
             text: "",
             icon: 'warning',
@@ -152,11 +177,11 @@ document.addEventListener("click", (e) => {
             transition: '0.4s'
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
+              swalMod.fire(
                 'prontinho!',
                 'sua tarefa foi deletada.',
                 'success'
-            )
+              )
             parentEl.remove();
             removeTodoLocalStorage(todoTitle);   
   }
@@ -203,7 +228,7 @@ filterBtn.addEventListener("change", (e) => {
     filterTodos(filterValue);
 });
 
-//Local Storage
+//local storage
 const getTodosLocalStorage = () => {
     const todos = JSON.parse(localStorage.getItem("todos")) || [];
     return todos;
