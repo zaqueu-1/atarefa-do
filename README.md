@@ -1,4 +1,4 @@
-<h2><a href="https://zaqueu-1.github.io/atarefa-do/"> atarefa.do </a></h2>
+<h2><a href="https://atarefa-do.vercel.app/"> atarefa.do </a></h2>
 <h5>seu caderninho virtual</h5>
 
 <div style="display: inline_block">
@@ -7,14 +7,10 @@
 <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" />   
 </div>
 
-<img src ="https://media.discordapp.net/attachments/946466891235491901/1032813791093723262/unknown.png" />
-
-<div style="display: inline_block"> 
-<a href="https://www.linkedin.com/in/zaqueu1/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
-</div>
+<img src ="https://media.discordapp.net/attachments/1032819189288816690/1041685183126048848/image.png" />
 
 <h2>Descrição</h2>
-<p><a href="https://zaqueu-1.github.io/atarefa-do/">atarefa.do</a> foi pensado pra ser simples e fácil de usar: um caderninho virtual (o <b><i>seu</b></i> caderninho virtual!) cheio de personalidade!</p>
+<p><a href="https://atarefa-do.vercel.app/">atarefa.do</a> foi pensado pra ser simples e fácil de usar: um caderninho virtual (o <b><i>seu</b></i> caderninho virtual!) cheio de personalidade!</p>
 
 Com ele você pode organizar suas tarefas diárias de forma prática e descomplicada, podendo filtrá-las, editá-las e buscá-las a qualquer momento!
 
@@ -30,5 +26,9 @@ Com ele você pode organizar suas tarefas diárias de forma prática e descompli
     </td>
   </tr>
 </table>
+
+  <div style="display: inline_block"> 
+<a href="https://www.linkedin.com/in/zaqueu1/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+</div>
 
 # atarefa-do

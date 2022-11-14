@@ -1,3 +1,26 @@
+/*mobile*/
+@media (max-width: 600px) {
+    html {
+      overflow-x: hidden;
+    }
+
+    .dmode {
+        padding: -10px 0 -10px 0;
+    }
+
+    body {
+        padding: 0 15px 0 25px;
+    }
+
+    .contato {
+    margin-top: -10px;
+    }
+
+    .footer {
+    padding-bottom: 10px;
+    }
+}
+
 /*dark-theme*/
 .dark {
     background-color: #263238;
@@ -26,12 +49,13 @@ body {
 
 .todo-container {
     background-color: #FED298;
-    box-shadow:  12px 12px 30px rgb(109, 109, 109),  /*right*/
+    box-shadow:  8px 6px 20px rgb(109, 109, 109, 0.4),  /*right*/
                 -10px 0px 0px #DEB99E;              /*left*/
     border-radius: 30px 60px;
-    margin: 3rem auto;
+    margin: 50px auto 20px auto;
+    max-height: 800px;
     max-width: 500px;
-    padding: 1.5rem;
+    padding: 15px;
     transition: 0.3s;
 }
 
@@ -63,6 +87,148 @@ h1 {
     color:#555;
     font-size: 0.75rem;
     margin-top: -4px;
+}
+
+/*inputs, select & forms*/
+#todo-form, #edit-form {
+    border-bottom: 1px dashed #CC9A81;
+    padding: 1rem;
+    transition: 0.3s;
+}
+
+#todo-form p, #edit-form p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    display: flex;
+}
+
+.form-control input {
+    margin-right: 0.3rem;
+}
+
+input, select {
+    background-color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 8px;
+    color: #666;
+    line-height: 28px;
+    height: 40px;
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+input:hover, select:hover {
+    border: 2px solid rgb(102, 102, 102, 0.5);
+}
+
+::placeholder {
+    opacity: 0.6;
+}
+
+/*toolbar (search & filter)*/
+#toolbar {
+    border-bottom: 1px dashed #CC9A81;
+    display: flex;
+    padding: 1rem;
+    transition: 0.3s;
+}
+
+#toolbar h4 {
+    margin-bottom: .5rem;
+}
+
+#search form {
+    display: flex;
+}
+
+#search {
+    border-right: 1px dashed #CC9A81;
+    display: flex;
+    width: 80%;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    flex-direction: column;
+}
+
+#search input {
+    margin-right: 0.3rem;
+}
+
+#filter {
+    width: 30%;
+    display: flex;
+    flex-direction: column;    
+}
+
+#filter-select {
+    color: rgb(102, 102, 102, 0.6);
+    flex: 1;
+}
+
+/*to do area*/
+#todo-list {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#height-adjust {
+    padding: 0px 0px 55px 5px;
+}
+
+#todo-list::-webkit-scrollbar {
+    width: 4px;
+    height: 6px;
+}
+
+#todo-list::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}
+
+#todo-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+
+#todo-list::-webkit-scrollbar-thumb:hover{
+    background: rgba(0,0,0,0.3);
+}
+
+#todo-list::-webkit-scrollbar-thumb:active{
+    background: rgba(0,0,0,.9);
+}
+
+.todo {
+    align-items: center;
+    border-bottom: 1px dashed #CC9A81;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 20px;
+}
+
+.todo h3 {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.todo button {
+    margin-left: 0.4rem;
+}
+
+.done {
+    background-color: #FEDBB2;
+    transition: 0.3s;
+}
+
+.done h3 {
+    opacity: 0.5;
+    text-decoration: line-through;
+    transition: 0.6s;
 }
 
 /*buttons*/
@@ -131,117 +297,6 @@ button:hover#submit-task, button:hover#edit-task {
     border-radius: 8px;
 }
 
-/*inputs, select & forms*/
-#todo-form, #edit-form {
-    border-bottom: 1px dashed #CC9A81;
-    padding: 1rem;
-    transition: 0.3s;
-}
-
-#todo-form p, #edit-form p {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.form-control {
-    display: flex;
-}
-
-.form-control input {
-    margin-right: 0.3rem;
-}
-
-input, select {
-    background-color: whitesmoke;
-    border: 2px solid whitesmoke;
-    border-radius: 8px;
-    color: #666;
-    line-height: 28px;
-    height: 40px;
-    width: 100%;
-    padding: 0.25rem 0.5rem;
-    padding-left: 0.5rem;
-    outline: none;
-    transition: 0.3s ease;
-}
-
-input:hover, select:hover {
-    border: 2px solid rgb(102, 102, 102, 0.5);
-}
-
-::placeholder {
-    opacity: 0.6;
-}
-
-/*toolbar (search & filter)*/
-#toolbar {
-    border-bottom: 1px dashed #CC9A81;
-    display: flex;
-    padding: 1rem;
-    transition: 0.3s;
-}
-
-#toolbar h4 {
-    margin-bottom: .5rem;
-}
-
-#search form {
-    display: flex;
-}
-
-#search {
-    border-right: 1px dashed #CC9A81;
-    display: flex;
-    width: 80%;
-    margin-right: 1rem;
-    padding-right: 1rem;
-    flex-direction: column;
-}
-
-#search input {
-    margin-right: 0.3rem;
-}
-
-#filter {
-    width: 30%;
-    display: flex;
-    flex-direction: column;    
-}
-
-#filter-select {
-    color: rgb(102, 102, 102, 0.6);
-    flex: 1;
-}
-
-/*tasks (to dos)*/
-.todo {
-    align-items: center;
-    border-bottom: 1px dashed #CC9A81;
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-}
-
-.todo h3 {
-    flex: 1;
-    font-size: 0.9rem;
-}
-
-.todo button {
-    margin-left: 0.4rem;
-}
-
-.done {
-    background-color: #FEDBB2;
-    transition: 0.3s;
-}
-
-.done h3 {
-    opacity: 0.5;
-    text-decoration: line-through;
-    transition: 0.6s;
-}
-
 /*footer*/
 .contato {
     display: flex;
@@ -276,7 +331,6 @@ button#git, button#in {
 
 h6.footer {
     display: flex;
-    padding-bottom: 20px;
 }
 
 /*dark mode toggle wrapper*/

@@ -66,14 +66,8 @@ saveTodo = (text, done = 0, save = 1) => {
         saveTodoLocalStorage({ text, done: 0 });
     }
 
-    todoList.appendChild(todo);
+    todoList.insertBefore(todo, todoList.firstChild);
     todoInput.value = "";
-};
-
-toggleForms = () => {
-    editForm.classList.toggle("hide");
-    todoForm.classList.toggle("hide");
-    todoList.classList.toggle("hide");
 };
 
 updateTodo = (text) => {
@@ -99,10 +93,16 @@ getSearchedTodos = (search) => {
             todo.style.display = "none";
         } 
 
-        if (todoTitle.toUpperCase().includes(search) || todoTitle.toLowerCase().includes(search)) {
+        if (todoTitle.toUpperCase().includes(search)) {
             todo.style.display = "flex";
         }
     });
+};
+
+toggleForms = () => {
+    editForm.classList.toggle("hide");
+    todoForm.classList.toggle("hide");
+    todoList.classList.toggle("hide");
 };
 
 filterTodos = (filterValue) => {
@@ -153,40 +153,31 @@ document.addEventListener("click", (e) => {
 
     if (targetEl.classList.contains("finish-todo")) {
         parentEl.classList.toggle("done");
+
         updateTodoStatusLocalStorage(todoTitle);
     }
 
     if (targetEl.classList.contains("remove-todo")) {
         
         const swalMod = swal.mixin({
-            maxWidth: '450px',
             background: '#555',
             color: 'whitesmoke',
           })
         
         swalMod.fire({
             title: 'quer apagar essa tarefa?',
-            display: 'block',
             text: "",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#abdb9a',
             cancelButtonColor: '#f88080',
             confirmButtonText: 'sim',
-            cancelButtonText: 'não',
-            transition: '0.4s'
+            cancelButtonText: 'não'
           }).then((result) => {
-            if (result.isConfirmed) {
-              swalMod.fire(
-                'prontinho!',
-                'sua tarefa foi deletada.',
-                'success'
-              )
-            parentEl.remove();
-            removeTodoLocalStorage(todoTitle);   
-  }
-});
-       
+           if (result.isConfirmed) {
+                parentEl.remove();
+                removeTodoLocalStorage(todoTitle);   
+            }})
     }
 
     if (targetEl.classList.contains("edit-todo")) {
@@ -213,7 +204,7 @@ editForm.addEventListener("submit", (e) => {
 });
 
 searchInput.addEventListener("keyup", (e) => {
-    const search = e.target.value.trim();
+    const search = e.target.value.trim().toUpperCase();
     getSearchedTodos(search);
 });
   
