@@ -4,13 +4,11 @@
 ![Javascript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 
-## atarefa.do: seu caderninho virtual!
+## atarefa.do: your personal notebook!
 
-atarefa.do foi pensado pra ser simples e fácil de usar: um caderninho virtual (o seu caderninho virtual!) cheio de personalidade!<br/>
+This project started as a study of 'to-do lists' patterns, but ended up receiving upgrades following requests of close friends of mine. Right now, atarefa.do aims to be your first choice as a personal notebook!
 
-Com ele você pode organizar suas tarefas diárias de forma prática e descomplicada, podendo filtrá-las, editá-las e buscá-las a qualquer momento!
-
-## Demonstração
+## Demo
 
 ![demo](https://github.com/zaqueu-1/atarefa-do/blob/main/chrome-capture-2022-11-16%20(3).gif)
 
@@ -18,12 +16,12 @@ Com ele você pode organizar suas tarefas diárias de forma prática e descompli
 http://atarefa-do.vercel.app/
 ## Roadmap
 
-- Backend no MongoDB [em breve];
-- Tags nas tarefas [em breve];
-- Login social [em breve];
+- Backend MongoDB [soon];
+- Tag system [soon];
+- Social Media Login [soon];
 
 
-## Autores
+## Author
 
 - [@zaqueu-1](https://www.github.com/zaqueu-1)
 
