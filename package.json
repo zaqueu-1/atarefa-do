@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
+  },
+  "name": "atarefado",
+  "description": "<h2><a href=\"https://atarefa-do.vercel.app/\"> atarefa.do </a></h2> <h5>seu caderninho virtual</h5>",
+  "version": "1.0.0",
+  "main": "/Users/zaq1/Documents/VSCode/Javascript/atarefado/index.html",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaqueu-1/atarefa-do.git"
+  },
+  "author": "Eduardo Zaqueu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaqueu-1/atarefa-do/issues"
+  },
+  "homepage": "https://github.com/zaqueu-1/atarefa-do#readme"
+}

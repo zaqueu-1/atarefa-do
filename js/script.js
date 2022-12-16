@@ -158,26 +158,8 @@ document.addEventListener("click", (e) => {
     }
 
     if (targetEl.classList.contains("remove-todo")) {
-        
-        const swalMod = swal.mixin({
-            background: '#555',
-            color: 'whitesmoke',
-          })
-        
-        swalMod.fire({
-            title: 'quer apagar essa tarefa?',
-            text: "",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#abdb9a',
-            cancelButtonColor: '#f88080',
-            confirmButtonText: 'sim',
-            cancelButtonText: 'não'
-          }).then((result) => {
-           if (result.isConfirmed) {
                 parentEl.remove();
                 removeTodoLocalStorage(todoTitle);   
-            }})
     }
 
     if (targetEl.classList.contains("edit-todo")) {
