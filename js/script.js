@@ -12,7 +12,7 @@ const getHeaders = () => ({
 const checkAuth = () => {
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.href = "/login"
+    window.location.href = "/login.html"
     return false
   }
   return true
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login"
+        window.location.href = "/login.html"
       }
       return []
     }
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login"
+        window.location.href = "/login.html"
       }
       return null
     }
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login"
+        window.location.href = "/login.html"
       }
       return null
     }
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login"
+        window.location.href = "/login.html"
       }
       return null
     }
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login"
+        window.location.href = "/login.html"
       }
       return false
     }
@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("logout-btn").addEventListener("click", () => {
       localStorage.removeItem("token")
       localStorage.removeItem("userName")
-      window.location.href = "/login"
+      window.location.href = "/login.html"
     })
   }
 
