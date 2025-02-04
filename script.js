@@ -9,13 +9,19 @@ const getHeaders = () => ({
   "Authorization": `Bearer ${localStorage.getItem("token")}`,
 })
 
-document.addEventListener("DOMContentLoaded", async () => {
-  // Verifica autenticação apenas na página principal
-  const token = localStorage.getItem("token")
-  if (!token) {
-    window.location.replace("/login")
-    return
-  }
+// Só executa se estiver na página principal
+if (
+  window.location.pathname === "/" ||
+  window.location.pathname === "/index.html"
+) {
+  document.addEventListener("DOMContentLoaded", async () => {
+    const token = localStorage.getItem("token")
+    if (!token) {
+      window.location.replace("/login")
+      return
+    }
 
-  // ... rest of the code ...
-})
+    await loadUserPreferences()
+    // ... rest of the code ...
+  })
+}

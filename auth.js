@@ -3,33 +3,6 @@ const API_URL =
     ? "http://localhost:5001/api"
     : "/api"
 
-const isAuthPage = () => {
-  const path = window.location.pathname
-  return (
-    path === "/login" ||
-    path === "/login.html" ||
-    path === "/register" ||
-    path === "/register.html"
-  )
-}
-
-const checkAuth = () => {
-  const token = localStorage.getItem("token")
-  const currentPath = window.location.pathname
-
-  // Se estiver em uma página de autenticação e tiver token, redireciona para home
-  if (token && isAuthPage()) {
-    window.location.replace("/")
-    return
-  }
-
-  // Se não estiver em uma página de autenticação e não tiver token, redireciona para login
-  if (!token && !isAuthPage()) {
-    window.location.replace("/login")
-    return
-  }
-}
-
 const showError = (message) => {
   const errorDiv = document.createElement("div")
   errorDiv.classList.add("error-message")
@@ -47,12 +20,6 @@ const showError = (message) => {
 
 const loginForm = document.getElementById("login-form")
 if (loginForm) {
-  // Se tiver token na página de login, redireciona para home
-  const token = localStorage.getItem("token")
-  if (token) {
-    window.location.replace("/")
-  }
-
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 
@@ -85,12 +52,6 @@ if (loginForm) {
 
 const registerForm = document.getElementById("register-form")
 if (registerForm) {
-  // Se tiver token na página de registro, redireciona para home
-  const token = localStorage.getItem("token")
-  if (token) {
-    window.location.replace("/")
-  }
-
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 
