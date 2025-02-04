@@ -1,13 +1,10 @@
-const API_URL = "http://localhost:5000/api"
+const API_URL = "http://localhost:5001/api"
 
-// Verifica se já está autenticado
 const checkAuth = () => {
   const token = localStorage.getItem("token")
   const currentPage = window.location.pathname
 
-  // Se não estiver autenticado
   if (!token) {
-    // Se não estiver em uma página de autenticação, redireciona para login
     if (
       !currentPage.includes("login.html") &&
       !currentPage.includes("register.html")
@@ -16,7 +13,6 @@ const checkAuth = () => {
       return
     }
   } else {
-    // Se estiver autenticado e tentar acessar páginas de auth, redireciona para index
     if (
       currentPage.includes("login.html") ||
       currentPage.includes("register.html")
@@ -27,10 +23,8 @@ const checkAuth = () => {
   }
 }
 
-// Executa verificação de autenticação quando a página carrega
 document.addEventListener("DOMContentLoaded", checkAuth)
 
-// Função para mostrar mensagem de erro
 const showError = (message) => {
   const errorDiv = document.createElement("div")
   errorDiv.classList.add("error-message")
@@ -46,7 +40,6 @@ const showError = (message) => {
   form.insertAdjacentElement("afterend", errorDiv)
 }
 
-// Formulário de Login
 const loginForm = document.getElementById("login-form")
 if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
@@ -70,7 +63,6 @@ if (loginForm) {
         throw new Error(data.error || "Erro ao fazer login")
       }
 
-      // Salva o token e redireciona
       localStorage.setItem("token", data.token)
       localStorage.setItem("userName", data.name)
       window.location.href = "/index.html"
@@ -80,7 +72,6 @@ if (loginForm) {
   })
 }
 
-// Formulário de Registro
 const registerForm = document.getElementById("register-form")
 if (registerForm) {
   registerForm.addEventListener("submit", async (e) => {
@@ -105,7 +96,6 @@ if (registerForm) {
         throw new Error(data.error || "Erro ao registrar usuário")
       }
 
-      // Salva o token e redireciona
       localStorage.setItem("token", data.token)
       localStorage.setItem("userName", data.name)
       window.location.href = "/index.html"

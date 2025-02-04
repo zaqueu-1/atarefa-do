@@ -1,45 +1,43 @@
 //dark mode
 const darkToggle = document.querySelector("#change-theme")
 
-// Verifica autenticação
+const API_BASE_URL = window.BACKEND_URL || "http://localhost:5001"
+const API_URL = `${API_BASE_URL}/api/tasks`
+
+const getHeaders = () => ({
+  "Content-Type": "application/json",
+  "Authorization": `Bearer ${localStorage.getItem("token")}`,
+})
+
 const checkAuth = () => {
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.href = "/login.html"
+    window.location.href = "/login"
     return false
   }
   return true
 }
 
-// Configuração do cabeçalho de autenticação
-const headers = {
-  "Content-Type": "application/json",
-  "Authorization": `Bearer ${localStorage.getItem("token")}`,
-}
-
-// Atualizar preferência de modo escuro
 const updateDarkModePreference = async (isDarkMode) => {
   try {
-    const response = await fetch("http://localhost:5000/api/user/dark-mode", {
+    const response = await fetch(`${API_BASE_URL}/api/user/dark-mode`, {
       method: "PATCH",
-      headers,
+      headers: getHeaders(),
       body: JSON.stringify({ darkMode: isDarkMode }),
     })
     if (!response.ok) {
       throw new Error("Erro ao atualizar preferência de modo escuro")
     }
-    // Atualiza também no localStorage para manter sincronizado
     localStorage.setItem("darkMode", isDarkMode)
   } catch (error) {
-    console.error(error.message)
+    throw error
   }
 }
 
-// Carregar preferência de modo escuro do usuário
 const loadUserPreferences = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/user/preferences", {
-      headers,
+    const response = await fetch(`${API_BASE_URL}/api/user/preferences`, {
+      headers: getHeaders(),
     })
     if (!response.ok) {
       throw new Error("Erro ao carregar preferências do usuário")
@@ -47,7 +45,6 @@ const loadUserPreferences = async () => {
     const data = await response.json()
     const isDark = data.darkMode
 
-    // Atualiza o localStorage
     localStorage.setItem("darkMode", isDark)
 
     if (isDark) {
@@ -58,8 +55,6 @@ const loadUserPreferences = async () => {
       darkToggle.checked = false
     }
   } catch (error) {
-    console.error(error.message)
-    // Em caso de erro, tenta carregar do localStorage
     const isDark = localStorage.getItem("darkMode") === "true"
     if (isDark) {
       document.body.classList.add("dark")
@@ -68,7 +63,6 @@ const loadUserPreferences = async () => {
   }
 }
 
-// Atualizar evento de alternância de tema
 if (darkToggle) {
   darkToggle.addEventListener("change", async () => {
     const isDarkMode = document.body.classList.toggle("dark")
@@ -76,14 +70,12 @@ if (darkToggle) {
   })
 }
 
-// Executa verificação quando a página carrega
 document.addEventListener("DOMContentLoaded", async () => {
-  if (!checkAuth()) return
+  const isAuthenticated = await checkAuth()
+  if (!isAuthenticated) return
 
-  // Carrega as preferências do usuário
   await loadUserPreferences()
 
-  //hmtl selector
   const todoForm = document.querySelector("#todo-form")
   const todoInput = document.querySelector("#todo-input")
   const todoList = document.querySelector("#todo-list")
@@ -95,23 +87,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const filterBtn = document.querySelector("#filter-select")
   let oldInputValue
 
-  const API_URL = "http://localhost:5000/api/todos"
-
-  // Funções de API
   const getTodos = async () => {
     try {
       const response = await fetch(API_URL, {
-        headers,
+        headers: getHeaders(),
       })
       if (!response.ok) {
         throw new Error("Sessão expirada")
       }
       return await response.json()
     } catch (error) {
-      console.error("Erro ao buscar todos:", error)
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "login.html"
+        window.location.href = "/login"
       }
       return []
     }
@@ -121,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(API_URL, {
         method: "POST",
-        headers,
+        headers: getHeaders(),
         body: JSON.stringify({ text }),
       })
       if (!response.ok) {
@@ -129,10 +117,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       return await response.json()
     } catch (error) {
-      console.error("Erro ao criar todo:", error)
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "login.html"
+        window.location.href = "/login"
       }
       return null
     }
@@ -142,17 +129,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(`${API_URL}/${id}/toggle`, {
         method: "PATCH",
-        headers,
+        headers: getHeaders(),
       })
       if (!response.ok) {
         throw new Error("Sessão expirada")
       }
       return await response.json()
     } catch (error) {
-      console.error("Erro ao atualizar status do todo:", error)
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "login.html"
+        window.location.href = "/login"
       }
       return null
     }
@@ -162,7 +148,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, {
         method: "PUT",
-        headers,
+        headers: getHeaders(),
         body: JSON.stringify({ text }),
       })
       if (!response.ok) {
@@ -170,10 +156,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       return await response.json()
     } catch (error) {
-      console.error("Erro ao atualizar texto do todo:", error)
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "login.html"
+        window.location.href = "/login"
       }
       return null
     }
@@ -183,24 +168,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
-        headers,
+        headers: getHeaders(),
       })
       if (!response.ok && response.status !== 204) {
         throw new Error("Sessão expirada")
       }
       return true
     } catch (error) {
-      console.error("Erro ao deletar todo:", error)
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "login.html"
+        window.location.href = "/login"
       }
       return false
     }
   }
 
-  //functions
-  saveTodo = async (text) => {
+  const saveTodo = async (text) => {
     const todo = await createTodo(text)
     if (todo) {
       const todoElement = document.createElement("div")
@@ -235,7 +218,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  updateTodo = async (text) => {
+  const updateTodo = async (text) => {
     const todos = document.querySelectorAll(".todo")
 
     todos.forEach(async (todoElement) => {
@@ -251,7 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   }
 
-  getSearchedTodos = (search) => {
+  const getSearchedTodos = (search) => {
     const todos = document.querySelectorAll(".todo")
 
     todos.forEach((todo) => {
@@ -267,13 +250,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   }
 
-  toggleForms = () => {
+  const toggleForms = () => {
     editForm.classList.toggle("hide")
     todoForm.classList.toggle("hide")
     todoList.classList.toggle("hide")
   }
 
-  filterTodos = (filterValue) => {
+  const filterTodos = (filterValue) => {
     const todos = document.querySelectorAll(".todo")
 
     switch (filterValue) {
@@ -376,7 +359,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     filterTodos(filterValue)
   })
 
-  // Carregar todos iniciais
   const loadTodos = async () => {
     const todos = await getTodos()
     todos.forEach((todo) => {
@@ -413,25 +395,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   loadTodos()
 
-  // Adicionar botão de logout
   const addLogoutButton = () => {
     const header = document.querySelector("header")
     const userName = localStorage.getItem("userName")
 
+    const existingUserInfo = header.querySelector(".user-info")
+    if (existingUserInfo) {
+      existingUserInfo.remove()
+    }
+
     const userDiv = document.createElement("div")
     userDiv.classList.add("user-info")
     userDiv.innerHTML = `
-            <span>Olá,</span>
-            <span><i>${userName}!</i></span>
-            <button id="logout-btn">Sair</button>
-        `
+      <span class="welcome-text">Olá, <i>${userName}!</i></span>
+      <button id="logout-btn" class="logout-button">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    `
 
     header.appendChild(userDiv)
 
     document.getElementById("logout-btn").addEventListener("click", () => {
       localStorage.removeItem("token")
       localStorage.removeItem("userName")
-      window.location.href = "login.html"
+      window.location.href = "/login"
     })
   }
 

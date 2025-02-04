@@ -1,7 +1,5 @@
-// Dark mode toggle
 const darkToggle = document.querySelector("#change-theme")
 
-// Função para carregar tema do localStorage (fallback quando não estiver logado)
 const loadTheme = () => {
   const isDark = localStorage.getItem("darkMode") === "true"
   if (isDark) {
@@ -10,12 +8,10 @@ const loadTheme = () => {
   }
 }
 
-// Função para salvar tema no localStorage (fallback)
 const saveTheme = (isDark) => {
   localStorage.setItem("darkMode", isDark)
 }
 
-// Evento de alteração do tema
 if (darkToggle) {
   darkToggle.addEventListener("change", () => {
     const isDark = document.body.classList.toggle("dark")
@@ -23,5 +19,4 @@ if (darkToggle) {
   })
 }
 
-// Carregar tema ao iniciar
 loadTheme()
