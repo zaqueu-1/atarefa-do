@@ -30,13 +30,6 @@ const checkAuth = () => {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Só executa checkAuth se não estiver em uma página de autenticação
-  if (!isAuthPage()) {
-    checkAuth()
-  }
-})
-
 const showError = (message) => {
   const errorDiv = document.createElement("div")
   errorDiv.classList.add("error-message")
@@ -54,6 +47,12 @@ const showError = (message) => {
 
 const loginForm = document.getElementById("login-form")
 if (loginForm) {
+  // Se tiver token na página de login, redireciona para home
+  const token = localStorage.getItem("token")
+  if (token) {
+    window.location.replace("/")
+  }
+
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 
@@ -86,6 +85,12 @@ if (loginForm) {
 
 const registerForm = document.getElementById("register-form")
 if (registerForm) {
+  // Se tiver token na página de registro, redireciona para home
+  const token = localStorage.getItem("token")
+  if (token) {
+    window.location.replace("/")
+  }
+
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 

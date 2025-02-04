@@ -9,11 +9,13 @@ const getHeaders = () => ({
   "Authorization": `Bearer ${localStorage.getItem("token")}`,
 })
 
-const checkAuth = () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  // Verifica autenticação apenas na página principal
   const token = localStorage.getItem("token")
   if (!token) {
     window.location.replace("/login")
-    return false
+    return
   }
-  return true
-}
+
+  // ... rest of the code ...
+})
