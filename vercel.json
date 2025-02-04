@@ -7,6 +7,10 @@
     {
       "source": "/register",
       "destination": "/register.html"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/server.js"
     }
   ],
   "headers": [
