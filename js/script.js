@@ -12,7 +12,7 @@ const getHeaders = () => ({
 const checkAuth = () => {
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.href = "/login.html"
+    window.location.replace("/login.html")
     return false
   }
   return true
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login.html"
+        window.location.replace("/login.html")
       }
       return []
     }
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login.html"
+        window.location.replace("/login.html")
       }
       return null
     }
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login.html"
+        window.location.replace("/login.html")
       }
       return null
     }
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login.html"
+        window.location.replace("/login.html")
       }
       return null
     }
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.href = "/login.html"
+        window.location.replace("/login.html")
       }
       return false
     }
@@ -393,9 +393,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   }
 
-  loadTodos()
-
-  const addLogoutButton = () => {
+  addLogoutButton = () => {
     const header = document.querySelector("header")
     const userName = localStorage.getItem("userName")
 
@@ -418,9 +416,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("logout-btn").addEventListener("click", () => {
       localStorage.removeItem("token")
       localStorage.removeItem("userName")
-      window.location.href = "/login.html"
+      window.location.replace("/login.html")
     })
   }
 
   addLogoutButton()
+  await loadTodos()
 })
