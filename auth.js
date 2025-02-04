@@ -20,6 +20,11 @@ const showError = (message) => {
 
 const loginForm = document.getElementById("login-form")
 if (loginForm) {
+  const token = localStorage.getItem("token")
+  if (token) {
+    window.location.replace("/")
+  }
+
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 
@@ -52,6 +57,11 @@ if (loginForm) {
 
 const registerForm = document.getElementById("register-form")
 if (registerForm) {
+  const token = localStorage.getItem("token")
+  if (token) {
+    window.location.replace("/")
+  }
+
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 

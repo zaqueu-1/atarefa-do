@@ -9,7 +9,6 @@ const getHeaders = () => ({
   "Authorization": `Bearer ${localStorage.getItem("token")}`,
 })
 
-// Só executa se estiver na página principal
 if (
   window.location.pathname === "/" ||
   window.location.pathname === "/index.html"
@@ -22,6 +21,5 @@ if (
     }
 
     await loadUserPreferences()
-    // ... rest of the code ...
   })
 }
