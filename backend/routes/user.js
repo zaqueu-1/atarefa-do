@@ -2,7 +2,6 @@ const router = require("express").Router()
 const authMiddleware = require("../middlewares/authMiddleware")
 const User = require("../models/User")
 
-// Obter preferências do usuário
 router.get("/preferences", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
@@ -15,7 +14,6 @@ router.get("/preferences", authMiddleware, async (req, res) => {
   }
 })
 
-// Atualizar preferência de modo escuro
 router.patch("/dark-mode", authMiddleware, async (req, res) => {
   try {
     const { darkMode } = req.body
