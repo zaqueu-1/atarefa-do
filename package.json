@@ -1,31 +1,25 @@
 {
-  "name": "todo-app",
+  "name": "atarefa-do",
   "version": "1.0.0",
-  "description": "Aplicativo de tarefas com MongoDB",
+  "description": "Aplicação de gerenciamento de tarefas",
   "main": "backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "serve-frontend": "http-server . -p 8080 --cors -c-1 --proxy http://localhost:5001",
+    "dev:all": "concurrently \"npm run dev\" \"npm run serve-frontend\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "http-server": "^14.1.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zaqueu-1/atarefa-do.git"
-  },
-  "author": "Eduardo Zaqueu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zaqueu-1/atarefa-do/issues"
-  },
-  "homepage": "https://github.com/zaqueu-1/atarefa-do#readme"
+    "nodemon": "^2.0.20",
+    "concurrently": "^8.2.2"
+  }
 }
