@@ -11,7 +11,7 @@ const getHeaders = () => ({
 const checkAuth = () => {
   const token = localStorage.getItem("token")
   if (!token) {
-    window.location.replace("/login.html")
+    window.location.replace("/login")
     return false
   }
   return true
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.replace("/login.html")
+        window.location.replace("/login")
       }
       return []
     }
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.replace("/login.html")
+        window.location.replace("/login")
       }
       return null
     }
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.replace("/login.html")
+        window.location.replace("/login")
       }
       return null
     }
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.replace("/login.html")
+        window.location.replace("/login")
       }
       return null
     }
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (error) {
       if (error.message === "Sessão expirada") {
         localStorage.removeItem("token")
-        window.location.replace("/login.html")
+        window.location.replace("/login")
       }
       return false
     }
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("logout-btn").addEventListener("click", () => {
       localStorage.removeItem("token")
       localStorage.removeItem("userName")
-      window.location.replace("/login.html")
+      window.location.replace("/login")
     })
   }
 

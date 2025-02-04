@@ -2,10 +2,8 @@ const router = require("express").Router()
 const Todo = require("../models/Todo")
 const authMiddleware = require("../middlewares/authMiddleware")
 
-// Aplicar middleware de autenticação em todas as rotas
 router.use(authMiddleware)
 
-// Listar todos
 router.get("/", async (req, res) => {
   try {
     const todos = await Todo.find({ createdBy: req.user._id }).sort({
@@ -17,7 +15,6 @@ router.get("/", async (req, res) => {
   }
 })
 
-// Criar todo
 router.post("/", async (req, res) => {
   try {
     const { text } = req.body
@@ -31,7 +28,6 @@ router.post("/", async (req, res) => {
   }
 })
 
-// Atualizar status do todo
 router.patch("/:id/toggle", async (req, res) => {
   try {
     const todo = await Todo.findOne({
@@ -51,7 +47,6 @@ router.patch("/:id/toggle", async (req, res) => {
   }
 })
 
-// Atualizar texto do todo
 router.put("/:id", async (req, res) => {
   try {
     const { text } = req.body
@@ -74,7 +69,6 @@ router.put("/:id", async (req, res) => {
   }
 })
 
-// Deletar todo
 router.delete("/:id", async (req, res) => {
   try {
     const todo = await Todo.findOneAndDelete({

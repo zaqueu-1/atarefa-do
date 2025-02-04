@@ -2,19 +2,19 @@ const API_URL = "http://localhost:5001/api"
 
 const isAuthPage = () => {
   const path = window.location.pathname
-  return path.includes("login.html") || path.includes("register.html")
+  return path.includes("login") || path.includes("register")
 }
 
 const checkAuth = () => {
   const token = localStorage.getItem("token")
 
   if (token && isAuthPage()) {
-    window.location.replace("/index.html")
+    window.location.replace("/index")
     return
   }
 
   if (!token && !isAuthPage()) {
-    window.location.replace("/login.html")
+    window.location.replace("/login")
     return
   }
 }
@@ -61,7 +61,7 @@ if (loginForm) {
 
       localStorage.setItem("token", data.token)
       localStorage.setItem("userName", data.name)
-      window.location.replace("/index.html")
+      window.location.replace("/")
     } catch (error) {
       showError(error.message)
     }
@@ -94,7 +94,7 @@ if (registerForm) {
 
       localStorage.setItem("token", data.token)
       localStorage.setItem("userName", data.name)
-      window.location.replace("/index.html")
+      window.location.replace("/")
     } catch (error) {
       showError(error.message)
     }
