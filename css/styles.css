@@ -2,14 +2,43 @@
 @media (max-width: 600px) {
   html {
     overflow-x: hidden;
-  }
-
-  .dmode {
-    padding: -10px 0 -10px 0;
+    overflow-y: auto;
   }
 
   body {
-    padding: 0 15px 0 25px;
+    padding: 0 15px;
+    margin-top: 40px;
+  }
+
+  .todo-container {
+    margin: 20px auto;
+    max-height: none;
+    height: auto;
+  }
+
+  #todo-list {
+    max-height: none;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .dmode {
+    padding: 10px 0;
+  }
+
+  .todo {
+    padding: 12px 15px;
+  }
+
+  .todo h3 {
+    font-size: 0.85rem;
+    word-break: break-word;
+  }
+
+  button.finish-todo,
+  button.edit-todo,
+  button.remove-todo {
+    padding: 0.8rem;
   }
 
   .contato {
@@ -557,15 +586,15 @@ input:checked + .toggle .star--6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
+  gap: 0.5rem;
   background-color: var(--form-bg);
   border: 1px dashed #cc9a81;
   border-radius: 1rem;
-  padding: 0.5rem .25rem;
+  padding: 0.5rem 0.25rem;
   max-width: 60%;
   margin: 0 auto;
-  margin-top: .5rem;
-  margin-bottom: -.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem;
 }
 
 .user-info span {
@@ -589,10 +618,10 @@ input:checked + .toggle .star--6 {
 }
 
 :root {
-    --primary-color: #646ff0;
-    --primary-color-dark: #4b54b3;
-    --error-color: #dc3545;
-    --input-bg: #ffffff;
-    --form-bg: #ffcf96;
-    --text-color: #333;
+  --primary-color: #646ff0;
+  --primary-color-dark: #4b54b3;
+  --error-color: #dc3545;
+  --input-bg: #ffffff;
+  --form-bg: #ffcf96;
+  --text-color: #333;
 }
