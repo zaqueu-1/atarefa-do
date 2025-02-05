@@ -40,8 +40,8 @@ atarefa-do/
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Font Awesome (icons)
-- SweetAlert2 ()
+- Font Awesome
+- SweetAlert2
 
 ### Backend
 
@@ -58,7 +58,7 @@ atarefa-do/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/atarefa-do.git
+git clone https://github.com/zaqueu-1/atarefa-do.git
 cd atarefa-do
 ```
 
@@ -82,7 +82,7 @@ JWT_SECRET=your_jwt_secret
 1. For development (with hot-reload):
 
 ```bash
-npm run dev
+npm run dev:all
 ```
 
 2. For production:
