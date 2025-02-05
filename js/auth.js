@@ -41,6 +41,14 @@ if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault()
 
+    const button = loginForm.querySelector("button")
+    const loadingSpinner = button.querySelector(".loading-spinner")
+    const buttonText = button.querySelector("span")
+
+    button.disabled = true
+    loadingSpinner.style.display = "block"
+    buttonText.textContent = ""
+
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
 
@@ -63,6 +71,9 @@ if (loginForm) {
       localStorage.setItem("userName", data.name)
       window.location.replace("/")
     } catch (error) {
+      button.disabled = false
+      loadingSpinner.style.display = "none"
+      buttonText.textContent = "Entrar"
       showError(error.message)
     }
   })
