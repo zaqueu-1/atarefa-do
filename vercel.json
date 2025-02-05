@@ -1,36 +1,60 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/login",
-      "destination": "/login.html"
+      "src": "backend/server.js",
+      "use": "@vercel/node"
     },
     {
-      "source": "/register",
-      "destination": "/register.html"
+      "src": "*.html",
+      "use": "@vercel/static"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/server.js"
+      "src": "css/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "js/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.js",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/server.js"
+    },
+    {
+      "src": "/login",
+      "dest": "/login.html"
+    },
+    {
+      "src": "/register",
+      "dest": "/register.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
+        { "key": "Access-Control-Allow-Credentials", "value": "true" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
         {
           "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
+          "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Content-Type, Authorization"
+          "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
         }
       ]
     }
-  ],
-  "cleanUrls": true
+  ]
 }

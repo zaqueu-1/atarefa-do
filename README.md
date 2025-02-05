@@ -1,54 +1,64 @@
-# Atarefa.do - Task Management Application
+# atarefa.do
 
-![HTML](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Javascript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 
-## Overview
-
-Atarefa.do is a modern task management application that helps you organize your daily activities. Originally started as a study of to-do list patterns, it has evolved into a full-featured personal task management solution with user authentication and data persistence.
+A modern task management application with user authentication and dark theme support.
 
 ## Features
 
-- 🔐 User Authentication (Register/Login)
-- 📝 Create, Read, Update, and Delete tasks
-- ✅ Mark tasks as completed
-- 🌓 Dark/Light theme toggle
-- 🔍 Search and filter tasks
+- ✅ User Authentication (register and login)
+- 📝 Create, edit, mark as complete and delete tasks
+- 🔍 Search tasks
+- 🎯 Filter tasks by status (all, completed, pending)
+- 🌓 Dark/Light theme with user preference persistence
+- 🔒 Route protection with JWT
 - 💾 Data persistence with MongoDB
-- 🔒 Secure API with JWT authentication
 
-## Tech Stack
+## Project Structure
+
+```
+atarefa-do/
+├── backend/
+│   ├── config/
+│   ├── middlewares/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+├── css/
+├── js/
+├── index.html
+├── login.html
+├── register.html
+├── auth.js
+├── script.js
+```
+
+## Technologies Used
 
 ### Frontend
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Font Awesome Icons
-- HTTP Server for static file serving
+- Font Awesome (icons)
+- SweetAlert2 ()
 
 ### Backend
 
 - Node.js
 - Express.js
-- MongoDB with Mongoose
+- MongoDB (with Mongoose)
 - JWT for authentication
-- bcrypt for password hashing
-- CORS enabled
+- bcryptjs for encryption
+- dotenv for environment variables
+- cors for frontend-backend communication
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- MongoDB installed and running
-- Git
-
-### Installation
+## Environment Setup
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/zaqueu-1/atarefa-do.git
+git clone https://github.com/your-username/atarefa-do.git
 cd atarefa-do
 ```
 
@@ -58,7 +68,7 @@ cd atarefa-do
 npm install
 ```
 
-3. Create a .env file in the root directory with the following variables:
+3. Configure environment variables: Create a `.env` file in the project root with the following variables:
 
 ```env
 PORT=5001
@@ -67,89 +77,49 @@ DB_PASS=your_mongodb_password
 JWT_SECRET=your_jwt_secret
 ```
 
-4. Start the development server:
+## How to Run
+
+1. For development (with hot-reload):
 
 ```bash
-npm run dev:all
+npm run dev
+```
+
+2. For production:
+
+```bash
+npm start
 ```
 
 The application will be available at:
 
 - Frontend: http://localhost:8080
-- Backend API: http://localhost:5001
+- Backend: http://localhost:5001
 
 ## API Endpoints
 
 ### Authentication
 
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/verify` - Verify JWT token
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - User login
 
 ### Tasks
 
-- `GET /api/tasks` - Get all tasks for authenticated user
-- `POST /api/tasks` - Create a new task
-- `PUT /api/tasks/:id` - Update a task
-- `DELETE /api/tasks/:id` - Delete a task
-- `PATCH /api/tasks/:id/toggle` - Toggle task completion status
+- `GET /api/tasks` - List all user tasks
+- `POST /api/tasks` - Create new task
+- `PUT /api/tasks/:id` - Update task
+- `DELETE /api/tasks/:id` - Delete task
+- `PATCH /api/tasks/:id/toggle` - Toggle task status
 
-## Project Structure
+### User Preferences
 
-```
-atarefa-do/
-├── backend/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── server.js
-├── css/
-│   ├── styles.css
-│   └── auth.css
-├── js/
-│   ├── auth.js
-│   ├── script.js
-│   ├── config.js
-│   └── theme.js
-├── index.html
-├── login.html
-├── register.html
-└── package.json
-```
+- `GET /api/user/preferences` - Get user preferences
+- `PATCH /api/user/dark-mode` - Update theme preference
 
-## Development
+## Deployment
 
-To start development:
-
-```bash
-npm run dev:all    # Starts both frontend and backend in development mode
-npm run dev        # Starts only backend with nodemon
-npm run serve-frontend  # Starts only frontend server
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## Roadmap
-
-- [ ] Social Media Login Integration
-- [ ] Task Categories/Tags
-- [ ] Task Due Dates
-- [ ] Task Sharing
-- [ ] Multiple Task Lists
+The project is configured for deployment on Vercel, with specific settings in the `vercel.json` file for routing and CORS.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Original concept inspired by traditional to-do applications
-- Modern UI/UX principles
-- Community feedback and feature requests
+This project is under the MIT License. See the [LICENSE.md](license.md) file for details.
